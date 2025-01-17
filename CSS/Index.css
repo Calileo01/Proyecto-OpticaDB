@@ -1,0 +1,68 @@
+body{
+    background: url('../Image/Background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    font-family: 'Verdana', sans-serif;
+}
+header{
+    background-image: linear-gradient( rgb(77, 9, 9) 60%, rgb(224, 24, 24), rgb(0,0,0));
+    padding: 1px;
+}
+.Title{
+    font-family: 'Roboto', sans-serif; 
+    color: white;
+    text-shadow: 3px 1px 1px black;
+    text-align: center;
+    font-size: 50px;
+}
+#Navegador li{
+    display: inline;
+    text-align: center;
+    margin: 0 5px 0 0;
+}
+#Navegador ul{
+    text-align: right;
+    margin-right: 1px;
+}
+#Navegador li a {
+    padding: 10px 10px 10px 10px;
+    color: black;
+    background-color: white;
+    border-radius: 2px;
+    text-decoration: none;
+}
+#Navegador li a:hover{
+    text-shadow: 1px 1px 0px black;
+    padding: 10px 10px 10px 10px;
+    color: yellow;
+    background-color: rgb(247, 247, 180);
+    border-radius: 2px;
+    text-decoration: none;
+}
+.Cuadro1{
+    text-justify: auto;
+    text-align: right;
+}
+.Parrafo1{
+    background-color: red;
+    margin: 100px 10px 0 1000px;
+    text-align: justify;
+    padding: 50px 5px 50px 5px;
+    border-radius: 20px;
+    background-image: linear-gradient( rgb(77, 9, 9) 40%, rgb(224, 24, 24) 70%, rgba(255, 255, 255, 0.342));
+    
+    color: white;
+    border: solid 5px rgb(0, 0, 0);
+    text-shadow: 1px 1px 5px black;
+}
+footer{
+    text-align: center;
+    background-color: rgb(77, 9, 9);
+    color: white;
+    padding: 25px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

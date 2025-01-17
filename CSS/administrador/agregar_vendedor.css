@@ -1,0 +1,49 @@
+body{
+    background-image: url('/Image/Background_dashboard.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Verdana', sans-serif;
+}
+    header{
+    background-image: linear-gradient( rgb(77, 9, 9) 60%, rgb(224, 24, 24), rgb(0,0,0));
+    padding: 1px;
+}
+.Title{
+    font-family: 'Roboto', sans-serif; 
+    color: white;
+    text-shadow: 3px 1px 1px black;
+    text-align: center;
+    font-size: 50px;
+}
+#Navegador li{
+    display: inline;
+    text-align: center;
+    margin: 0 5px 0 0;
+}
+#Navegador ul{
+    text-align: center;
+    margin-right: 1px;
+}
+#Navegador li a {
+    padding: 10px 10px 10px 10px;
+    color: black;
+    background-color: white;
+    border-radius: 2px;
+    text-decoration: none;
+}
+#Navegador li a:hover{
+    text-shadow: 1px 1px 0px black;
+    padding: 10px 10px 10px 10px;
+    color: yellow;
+    background-color: rgb(247, 247, 180);
+    border-radius: 2px;
+    text-decoration: none;
+}
+.Text_Agregar_Estudiante{
+    background-color: white;
+    margin:50px; 
+    padding:20px; 
+    border: solid black 1px;
+    border-radius: 10px 10px 0px 10px;
+    box-shadow: black 5px 5px 5px;
+}
