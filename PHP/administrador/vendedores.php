@@ -6,6 +6,14 @@
     $consulta="SELECT*FROM vendedores";
     $resultados=$mysqli->query($consulta);
     $filas=$resultados->fetch_all(MYSQLI_ASSOC);
+  
+    if (isset($_POST['busqueda'])){
+        $termino_busqueda=$mysqli->real_escape_string($_POST['busqueda']);
+
+        $consulta_buscar="SELECT*FROM vendedores WHERE (nombre_vendedor LIKE '%$termino_busqueda%') OR (apellido_vendedor LIKE '%$termino_busqueda%')";
+        $resultados_busqueda=$mysqli->query($consulta_buscar);
+        $filas_busqueda=$resultados_busqueda->fetch_all(MYSQLI_ASSOC);
+    }
     ?>
 <head>
     <meta charset="UTF-8">
@@ -42,52 +50,84 @@
                                     <a href="agregar_vendedor.php"><button class="btn text-white"style="background-color:brown;">Agregar Vendedores</button></a>
                                 </div>
                                 <div class="col">
-                                    <input type="text" class="form-control" placeholder="Buscar">
-                                </div>
-                                <div class="col">
-                                    Column
+                                    <form action="vendedores.php" method="post">
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="busqueda" class="form-control" placeholder="Escribe para buscar" aria-describedby="basic-addon1">
+                                            <button type="submit"class="btn bg-warning">Buscar</button>
+                                            <a href="vendedores.php"><button class="btn btn-secondary">Limpiar</button></a>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                            <div class="container text-center">
+                                <?php 
+                                if (isset($_POST['busqueda'])){?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <?php
+                                    echo "Los resultados de la busqueda para: ".$_POST['busqueda'];
+                                    }
+                                    ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                 
+        
+                                <thead>
+                                    <tr align="center"class="text-white" style="background-color: rgb(77, 9, 9);">
+                                        <th style="border-radius:10px 0px 0px 10px;">#</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Cedula</th>
+                                        <th>Telefono</th>
+                                        <th>Correo</th>
+                                        <th style="border-radius:0px 10px 10px 0px;">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php 
+                                    if (isset($_POST['busqueda'])) {
+                                    $num=1;
+                                    foreach($filas_busqueda as $fila_busqueda){
+                                    ?>
+                                    <tr>
+                                        <td style="border-radius: 10px 0px 0px 10px;"><?php echo $num++;?></td>
+                                        <td><?php echo $fila_busqueda['nombre_vendedor'];?></td>
+                                        <td><?php echo $fila_busqueda['apellido_vendedor'];?></td>
+                                        <td><?php echo $fila_busqueda['cedula'];?></td>
+                                        <td><?php echo $fila_busqueda['telefono'];?></td>
+                                        <td><?php echo $fila_busqueda['correo'];?></td>
+                                        <td align="center"style="border-radius: 0px 10px 10px 0px;"><button type="buttom" class="btn btn-warning">Editar</button></td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    
+                                    } else {
+                                        $num=1;
+                                        foreach($filas as $fila){
+                                        ?>
 
-                <thead>
-                    <tr align="center"class="text-white" style="background-color: rgb(77, 9, 9);">
-                        <th style="border-radius:10px 0px 0px 10px;">#</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Cedula</th>
-                        <th>Telefono</th>
-                        <th>Correo</th>
-                        <th style="border-radius:0px 10px 10px 0px;">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $num=1;
-                    foreach($filas as $fila){
-                    ?>
-                    <tr>
-                        <td style="border-radius: 10px 0px 0px 10px;"><?php echo $num++;?></td>
-                        <td><?php echo $fila['nombre_vendedor'];?></td>
-                        <td><?php echo $fila['apellido_vendedor'];?></td>
-                        <td><?php echo $fila['cedula'];?></td>
-                        <td><?php echo $fila['telefono'];?></td>
-                        <td><?php echo $fila['correo'];?></td>
-                        <td align="center"style="border-radius: 0px 10px 10px 0px;"><button type="buttom" class="btn btn-warning">Editar</button></td>
-                    </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                                        <tr>
+                                            <td style="border-radius: 10px 0px 0px 10px;"><?php echo $num++;?></td>
+                                            <td><?php echo $fila['nombre_vendedor'];?></td>
+                                            <td><?php echo $fila['apellido_vendedor'];?></td>
+                                            <td><?php echo $fila['cedula'];?></td>
+                                            <td><?php echo $fila['telefono'];?></td>
+                                            <td><?php echo $fila['correo'];?></td>
+                                            <td align="center"style="border-radius: 0px 10px 10px 0px;"><button type="buttom" class="btn btn-warning">Editar</button></td>
+                                        </tr>
+                                        <?php
+                                        }
+                                    }
+                                    
+                                ?>
+                                    
+                                </tbody>
+                            </div>
+        </div>          
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-<?php
-//session_start();
-//echo "Bienvenido ".$_SESSION['nombre_usu'];
-?>
+
