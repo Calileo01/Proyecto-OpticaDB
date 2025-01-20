@@ -20,20 +20,20 @@
         <nav>
             <div id="Navegador">
                 <ul>
-                    <li><a href="vendedores.php">Lista de Vendedores</a></li>
+                    <li><a href="vendedores.php">Lista de Productos</a></li>
                     <li><a href="../logout.php">Cerrar Sesión (<?php echo $_SESSION['nombre_usu'];?>)</a></li>
                 </ul>
             </div>
         </nav>
 </header>
 
-    <p align="center" style="margin:50px;"><span class="Wellcome"> Bienvenido <?php echo $_SESSION['nombre_usu'];?></span></p>
+    <p align="center" style="margin:50px;"><span class="Wellcome"> Bienvenido Usuario <?php echo $_SESSION['nombre_usu'];?></span></p>
 <div class="container text-center" style="box-shadow: black 0px 0px 10px 2px; background-color: rgba(0, 0, 0, 0.5);">
     <div class="row">
         <div class="col">
             <div class="container-fluid d-flex align-items-center justify-content-center" style="height:30vh;">
                 <div class="card" style="width: 18rem;">
-                    <div class="card-header text-center fs-4 text-white" style="background-color:brown;">Vendedores   
+                    <div class="card-header text-center fs-4 text-white" style="background-color:brown;">Productos activos   
                     </div>
                         <div class="card-body" style="background-color:brown;">
                             <h1 style="color: white;"><?php echo count($filas); ?></h1>
@@ -44,7 +44,7 @@
             <div class="col">
                 <div class="container-fluid d-flex align-items-center justify-content-center" style="height:30vh;">
                     <div class="card" style="width: 18rem;">
-                        <div class="card-header text-center fs-4 text-white" style="background-color:brown;">Administradores
+                        <div class="card-header text-center fs-4 text-white" style="background-color:brown;">Usuarios
                         </div>
                             <div class="card-body" style="background-color:brown;">
                                 <h1 style="color: white;">1</h1>

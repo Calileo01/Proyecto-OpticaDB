@@ -35,11 +35,11 @@
                     </ul>
                 </div>
             </nav>
-        </header>
+</header>
 
         <p align="center" style="margin:50px;"><span class="Wellcome">Usuarios Vendedores</span></p>
 
-        <div class="container table-scroll" style="border: black solid 1px; background-color: white; padding:10px;">
+        <div class="container table-scroll" style="border: black solid 1px; background-color: rgb(77, 9, 9); padding:10px;">
             <table class="container">
 
                 <div class="card">
@@ -62,16 +62,17 @@
                         </div>
                     </div>
                 </div>
+
                             <div class="container text-center">
                                 <?php 
-                                if (isset($_POST['busqueda'])){?>
+                                if (isset($_POST['busqueda'])) { ?>
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <?php
-                                    echo "Los resultados de la busqueda para: ".$_POST['busqueda'];
-                                    }
+                                    <?php
+                                    echo "Los resultados de la búsqueda para: " . htmlspecialchars($_POST['busqueda']);
                                     ?>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
+                                <?php } ?>
                                  
         
                                 <thead>
@@ -98,7 +99,29 @@
                                         <td><?php echo $fila_busqueda['cedula'];?></td>
                                         <td><?php echo $fila_busqueda['telefono'];?></td>
                                         <td><?php echo $fila_busqueda['correo'];?></td>
-                                        <td align="center"style="border-radius: 0px 10px 10px 0px;"><button type="buttom" class="btn btn-warning">Editar</button></td>
+                                        <td align="center"style="border-radius: 0px 10px 10px 0px;"><a href="editar_vendedor.php?id=<?php echo base64_encode($fila_busqueda['id_vendedor']);?>"><button type="buttom" class="btn btn-warning">Editar</button></a>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="Modal_eliminar_<?php echo $fila_busqueda['id_vendedor'];?>">Eliminar</button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="#Modal_eliminar_<?php echo $fila_busqueda['id_vendedor'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header" style="background-color: rgb(77, 9, 9);">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Vendedor</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color:white;"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="text-black">¿Está seguro que desea el vendedor (<?php echo $fila_busqueda['nombre_vendedor'].' '.$fila_busqueda['apellido_vendedor'];?>)?</p>
+                                                        </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                <a href="borrar.php?id=<?php echo base64_encode($fila_busqueda['id_vendedor']);?>"><button type="buttom" class="btn btn-danger">Eliminar</button></a>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                            
                                     </tr>
                                     <?php
                                     }
@@ -115,7 +138,28 @@
                                             <td><?php echo $fila['cedula'];?></td>
                                             <td><?php echo $fila['telefono'];?></td>
                                             <td><?php echo $fila['correo'];?></td>
-                                            <td align="center"style="border-radius: 0px 10px 10px 0px;"><button type="buttom" class="btn btn-warning">Editar</button></td>
+                                            <td align="center"style="border-radius: 0px 10px 10px 0px;"><a href="editar_vendedor.php?id=<?php echo base64_encode($fila['id_vendedor']);?>"><button type="buttom" class="btn btn-warning">Editar</button></a>
+                                            <button type="buttom" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal_eliminar_<?php echo $fila['id_vendedor'];?>">Eliminar</button>
+
+                                                    <!-- Modal -->
+                                                <div class="modal fade" id="Modal_eliminar_<?php echo $fila['id_vendedor'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header" style="background-color: rgb(77, 9, 9);">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Vendedor</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color:white;"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                            <p class="text-black">¿Está seguro que desea eliminar este vendedor (<?php echo $fila['nombre_vendedor'].' '.$fila['apellido_vendedor'];?>)?</p>
+                                                            </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                    <a href="borrar.php?id=<?php echo base64_encode($fila['id_vendedor']);?>"><button type="buttom" class="btn btn-danger">Eliminar</button></a>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <?php
                                         }
