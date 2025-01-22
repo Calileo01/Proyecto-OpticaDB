@@ -56,13 +56,20 @@ header{
     border: solid 5px rgb(0, 0, 0);
     text-shadow: 1px 1px 5px black;
 }
+.card{
+    margin: 20px;
+    
+}
+
 footer{
     text-align: center;
     background-color: rgb(77, 9, 9);
     color: white;
     padding: 25px;
-    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
 }
+.card-text {
+        font-size: 0.9rem; /* Ajusta el tamaño según tus necesidades */
+    }

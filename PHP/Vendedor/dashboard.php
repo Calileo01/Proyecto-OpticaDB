@@ -2,6 +2,14 @@
 <html lang="es">
     <?php
     session_start();
+
+// Verificar si el usuario ha iniciado sesión y es vendedor
+if (!isset($_SESSION['tipo_usu']) || $_SESSION['tipo_usu'] != 'vendedor') {
+    // Redirigir al login si no es vendedor
+    header("location:../../HTML/Login.html");
+    exit();
+}
+
     $mysqli= new mysqli("localhost","root","","opticadb");
     $consulta="SELECT*FROM vendedores";
     $resultados=$mysqli->query($consulta);

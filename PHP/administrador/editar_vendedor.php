@@ -2,6 +2,14 @@
 <html lang="es">
 <?php
     session_start();
+
+        // Verificar si el usuario ha iniciado sesión y es administrador
+if (!isset($_SESSION['tipo_usu']) || $_SESSION['tipo_usu'] != 1) {
+    // Redirigir al login si no es administrador
+    header("location:../../HTML/Login.html");
+    exit();
+}
+
     ?>
 <head>
     <meta charset="UTF-8">
