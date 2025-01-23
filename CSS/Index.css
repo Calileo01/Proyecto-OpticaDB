@@ -40,21 +40,13 @@ header{
     border-radius: 2px;
     text-decoration: none;
 }
-.Cuadro1{
-    text-justify: auto;
-    text-align: right;
-}
-.Parrafo1{
-    background-color: red;
-    margin: 100px 10px 0 1000px;
-    text-align: justify;
-    padding: 50px 5px 50px 5px;
+
+.Presentacion{
+    text-shadow: 1px 1px 1px black; 
+    padding: 50px; 
+    background-image: linear-gradient( rgb(77, 9, 9) 60%, rgb(224, 24, 24), rgb(0,0,0));
+    margin:150px auto auto;
     border-radius: 20px;
-    background-image: linear-gradient( rgb(77, 9, 9) 40%, rgb(224, 24, 24) 70%, rgba(255, 255, 255, 0.342));
-    
-    color: white;
-    border: solid 5px rgb(0, 0, 0);
-    text-shadow: 1px 1px 5px black;
 }
 .card{
     margin: 20px;

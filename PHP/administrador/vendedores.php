@@ -108,10 +108,10 @@
                                         <td><?php echo $fila_busqueda['telefono'];?></td>
                                         <td><?php echo $fila_busqueda['correo'];?></td>
                                         <td align="center"style="border-radius: 0px 10px 10px 0px;"><a href="editar_vendedor.php?id=<?php echo base64_encode($fila_busqueda['id_vendedor']);?>"><button type="buttom" class="btn btn-warning">Editar</button></a>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="Modal_eliminar_<?php echo $fila_busqueda['id_vendedor'];?>">Eliminar</button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modal_eliminar_<?php echo $fila_busqueda['id_vendedor'];?>">Eliminar</button>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="#Modal_eliminar_<?php echo $fila_busqueda['id_vendedor'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="Modal_eliminar_<?php echo $fila_busqueda['id_vendedor'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header" style="background-color: rgb(77, 9, 9);">
